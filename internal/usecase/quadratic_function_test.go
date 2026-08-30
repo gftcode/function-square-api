@@ -8,7 +8,7 @@ import (
 func TestDelta(t *testing.T) {
 	a, b, c := 1, 2, 3
 	expectedDelta := -8.0
-
+	
 	eq := usecase.NewEquation(a, b, c)
 	delta := eq.FindDelta()
 

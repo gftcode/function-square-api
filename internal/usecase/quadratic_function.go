@@ -3,6 +3,8 @@ package usecase
 import (
 	"fmt"
 	"math"
+
+	"github.com/gftcode/function-square-api/internal/domain/formula"
 )
 
 type QuadraticFunction interface {
@@ -21,11 +23,14 @@ type Baskara struct {
 
 func NewEquation(a, b, c int) QuadraticFunction {
 	if a == 0 {
-		a = 1
 		fmt.Print("O coeficiente 'A' não pode ser '0'...\n")
 		fmt.Print("Este coeficiente agora recebe o valor '1'...\n")
+		fmt.Println("---------------------------------------------")
+		a = 1
 	}
 	
+	fmt.Println(formula.NewFormula().DeltaFormula())
+
 	eq := &Baskara{a: float64(a), b: float64(b), c: float64(c)}
 	eq.FindDelta()
 	return eq
@@ -36,6 +41,7 @@ func (bask *Baskara) GetCoefficients() (a, b, c float64) {
 }
 
 func (bask *Baskara) FindDelta() float64 {
+
 	bask.delta = (bask.b * bask.b) - (4 * bask.a * bask.c)
 	return bask.delta
 }
@@ -44,7 +50,7 @@ func (bask *Baskara) Xrows() (float64, float64) {
 	if bask.delta < 0 {
 		return 0, 0
 	}
-
+	fmt.Println(formula.NewFormula().XrowFormula())
 	raizDelta := math.Sqrt(bask.delta)
 	x1 := (-bask.b + raizDelta) / (2 * bask.a)
 	x2 := (-bask.b - raizDelta) / (2 * bask.a)
@@ -53,6 +59,8 @@ func (bask *Baskara) Xrows() (float64, float64) {
 }
 
 func (bask *Baskara) FindVertices() (float64, float64) {
+	fmt.Println(formula.NewFormula().VerticesFormula())
+
 	Xv := -bask.b / (2 * bask.a)
 	Yv := -bask.delta / (4 * bask.a)
 	return Xv, Yv

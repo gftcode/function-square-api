@@ -50,3 +50,4 @@ func (o *Output) input() {
 		fmt.Println("Vamos tentar de novo...")
 	}
 }
+
