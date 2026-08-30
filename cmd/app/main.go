@@ -8,8 +8,10 @@ import (
 func main() {
 	equation := cli.NewCli().SetValues()
 
-	printer := plotter.NewTerminalPlotter(35, 25)
+	printer := plotter.NewTerminalPlotter(45, 20)
 
 	printer.Plot(equation)
 
+	cli.ExportResults(equation)
 }
+

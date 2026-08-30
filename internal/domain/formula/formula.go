@@ -1,6 +1,5 @@
 package formula
 
-
 type Formula struct {}
 
 func NewFormula() *Formula {
@@ -17,4 +16,8 @@ func (f *Formula) XrowFormula() string {
 
 func (f *Formula) VerticesFormula() string {
 	return "Xv = -b / (2.a) | Yv = -Δ / (4.a)"
+}
+
+func (f *Formula) GetFormulas() (string, string, string) {
+	return f.DeltaFormula() + "\n", f.XrowFormula() + "\n", f.VerticesFormula()+ "\n"
 }
